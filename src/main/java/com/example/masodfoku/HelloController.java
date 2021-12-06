@@ -47,28 +47,23 @@ public class HelloController {
             Alert nem = new Alert(Alert.AlertType.WARNING,"Beviteli mező nem lehet üres!");
             nem.show();
         } else {
-            D = (b * b) - (4 * a * c);
-            felso = (-b + Math.sqrt(D)) / 2 * a;
-            also = (-b - Math.sqrt(D)) / 2 * a;
+            D = Math.pow(b, 2) - (4 * a * c);
+
+            b*=-1;
+            felso = (b + Math.sqrt(D)) / 2 * a;
+            also = (b - Math.sqrt(D)) / 2 * a;
 
             if (D < 0) {
-                if (a < 0 || b < 0 || c < 0) {
-                    Alert nem = new Alert(Alert.AlertType.ERROR, "0-nál nagyobb szám megadása szükséges!");
-                    nem.show();
-                }else {
-                    x1.setText("Nem oldható meg a valós számok halmazán!");
-                }
+                x1.setText("Nem oldható meg a valós számok halmazán!");
+            }else if (felso == also) {
+                x1.setText(" x2 ="+felso);
+                iksz2.setText("");
             }
             else {
-                if (felso == also) {
-                    x1.setText(" x2 ="+felso);
-                    iksz2.setText("");
-                }
-                else {
-                    x1.setText(Double.toString(felso));
-                    x2.setText(Double.toString(also));
-                }
+                x1.setText(Double.toString(felso));
+                x2.setText(Double.toString(also));
             }
+
 
         }
     }
